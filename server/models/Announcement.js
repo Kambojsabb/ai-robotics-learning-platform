@@ -1,0 +1,2 @@
+const mongoose=require('mongoose');
+module.exports=mongoose.model('Announcement',new mongoose.Schema({title:{type:String,required:true},message:{type:String,required:true},subject:{type:String,enum:['AI','Robotics']},target:{type:String,enum:['ALL','CLASS','SECTION'],default:'ALL'},class:Number,section:String,createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},createdAt:{type:Date,default:Date.now}}));

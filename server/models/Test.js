@@ -1,0 +1,3 @@
+const mongoose=require('mongoose');
+const q=new mongoose.Schema({question:{type:String,required:true},options:{A:String,B:String,C:String,D:String},correctAnswer:{type:String,enum:['A','B','C','D'],required:true},marks:{type:Number,default:1,min:1}},{_id:true});
+module.exports=mongoose.model('Test',new mongoose.Schema({title:{type:String,required:true},subject:{type:String,enum:['AI','Robotics'],required:true},class:{type:Number,min:1,max:12},section:{type:String,uppercase:true},description:String,questions:[q],createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},createdAt:{type:Date,default:Date.now}}));

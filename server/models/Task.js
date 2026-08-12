@@ -1,0 +1,2 @@
+const mongoose=require('mongoose');
+module.exports=mongoose.model('Task',new mongoose.Schema({title:{type:String,required:true},description:String,subject:{type:String,enum:['AI','Robotics'],required:true},class:{type:Number,min:1,max:12},section:{type:String,uppercase:true},targetStudentId:{type:String,uppercase:true},dueDate:Date,instructions:String,attachmentUrl:String,createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},createdAt:{type:Date,default:Date.now}}));

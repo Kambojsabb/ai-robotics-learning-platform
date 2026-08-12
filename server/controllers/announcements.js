@@ -1,0 +1,5 @@
+const Announcement=require('../models/Announcement');const {notifyTarget}=require('../services/notify');
+async function list(req,res){let q={};if(req.user.role==='STUDENT')q={$or:[{target:'ALL'},{target:'CLASS',class:req.user.class},{target:'SECTION',class:req.user.class,section:req.user.section}]};const items=await Announcement.find(q).populate('createdBy','name role').sort({createdAt:-1});res.json({items})}
+async function create(req,res){const b=req.body;if(!b.title||!b.message)return res.status(400).json({message:'Title and message are required'});const item=await Announcement.create({...b,class:b.class?Number(b.class):undefined,section:b.section?b.section.toUpperCase():undefined,createdBy:req.user._id});await notifyTarget({title:b.title,message:b.message,type:'ANNOUNCEMENT',relatedId:item._id,target:b.target||'ALL',classNumber:b.class,section:b.section});res.status(201).json({item})}
+async function remove(req,res){await Announcement.findByIdAndDelete(req.params.id);res.json({message:'Announcement deleted'})}
+module.exports={list,create,remove};

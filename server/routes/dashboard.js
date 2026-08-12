@@ -1,0 +1,1 @@
+const r=require('express').Router();const c=require('../controllers/dashboard');const {authenticate,authorize}=require('../middleware/auth');r.use(authenticate);r.get('/admin',authorize('ADMIN'),c.admin);r.get('/teacher',authorize('TEACHER'),c.teacher);r.get('/student',authorize('STUDENT'),c.student);module.exports=r;

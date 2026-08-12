@@ -1,0 +1,3 @@
+const Notification=require('../models/Notification'); const User=require('../models/User');
+async function notifyTarget({title,message,type,relatedId,target='ALL',classNumber,section,targetStudentId}){let q={};if(targetStudentId)q={role:'STUDENT',studentId:String(targetStudentId).toUpperCase()};else if(target==='CLASS')q={role:'STUDENT',class:classNumber};else if(target==='SECTION')q={role:'STUDENT',class:classNumber,section:String(section).toUpperCase()};else q={role:'STUDENT'};const users=await User.find(q).select('_id');if(users.length)await Notification.insertMany(users.map(u=>({recipient:u._id,title,message,type,relatedId})))}
+module.exports={notifyTarget};

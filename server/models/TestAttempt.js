@@ -1,0 +1,2 @@
+const mongoose=require('mongoose');
+module.exports=mongoose.model('TestAttempt',new mongoose.Schema({test:{type:mongoose.Schema.Types.ObjectId,ref:'Test',required:true},student:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},answers:[{questionId:mongoose.Schema.Types.ObjectId,answer:String}],score:Number,totalMarks:Number,percentage:Number,correctAnswers:Number,wrongAnswers:Number,submittedAt:{type:Date,default:Date.now}},{timestamps:true}));

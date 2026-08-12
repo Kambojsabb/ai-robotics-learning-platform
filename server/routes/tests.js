@@ -1,0 +1,1 @@
+const r=require('express').Router();const c=require('../controllers/tests');const {authenticate,authorize}=require('../middleware/auth');r.use(authenticate);r.get('/stats',c.stats);r.get('/results',c.results);r.get('/',c.list);r.get('/:id',c.get);r.post('/',authorize('ADMIN','TEACHER'),c.create);r.post('/:id/attempt',authorize('STUDENT'),c.attempt);module.exports=r;
