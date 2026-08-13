@@ -79,11 +79,11 @@ export default function Home() {
 
           <div>
             <div className="logo-title">
-              AIROBO
+              IMATRIX EDUVERSITY
             </div>
 
             <div className="logo-subtitle">
-              LEARNING SYSTEM
+              AI/ROBOTICS
             </div>
           </div>
         </Link>
