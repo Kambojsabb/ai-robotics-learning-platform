@@ -14,6 +14,8 @@ import NotificationsPage from "./pages/NotificationsPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import ClassesPage from "./pages/ClassesPage";
 import ProfilePage from "./pages/ProfilePage";
+import About from "./pages/About";
+import Gallery from "./pages/Gallery";
 
 import Glow from "./components/Glow";
 
@@ -393,6 +395,15 @@ function AppRoutes() {
         </Guard>
       ),
     },
+
+    {
+    path: "/about",
+    element: <About />
+  },
+  {
+    path: "/gallery",
+    element: <Gallery />
+  },
 
     /* =====================================================
        FALLBACK

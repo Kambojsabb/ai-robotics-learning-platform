@@ -88,34 +88,29 @@ export default function Home() {
           </div>
         </Link>
 
-        <nav className="robot-nav">
-
-  <a href="#home" className="nav-tech nav-home nav-active">
+        <nav className="nav-menu">
+  <Link to="/" className="nav-tech nav-home">
+    <span className="nav-texture" />
     <span className="nav-text">HOME</span>
+  </Link>
+
+  <Link to="/about" className="nav-tech nav-about">
     <span className="nav-texture" />
-  </a>
+    <span className="nav-text">ABOUT</span>
+  </Link>
 
-  <a href="#technology" className="nav-tech nav-technology">
-    <span className="nav-text">TECHNOLOGY</span>
+  <Link to="/gallery" className="nav-tech nav-gallery">
     <span className="nav-texture" />
-  </a>
+    <span className="nav-text">GALLERY</span>
+  </Link>
 
-  <a href="#learning" className="nav-tech nav-learning">
-    <span className="nav-text">LEARNING</span>
-    <span className="nav-texture" />
-  </a>
-
-  <a href="#future" className="nav-tech nav-future">
-    <span className="nav-text">FUTURE</span>
-    <span className="nav-texture" />
-  </a>
-
-</nav>
-
-        <Link to="/login" className="login-button">
+  <Link to="/login" className="login-button">
           <span className="login-scan" />
           LOGIN / SIGN IN
         </Link>
+
+  
+</nav>
 
       </header>
 
@@ -365,6 +360,88 @@ export default function Home() {
       </main>
 
       {/* =====================================================
+    INTRO VIDEO — SYSTEM MODULE
+===================================================== */}
+
+<section className="intro-module">
+
+  <div className="intro-module-header">
+    <div className="intro-module-status">
+      <span className="intro-module-dot" />
+      SYSTEM INTRO
+    </div>
+
+    <div className="intro-module-code">
+      IMX // 001
+    </div>
+  </div>
+
+
+  <div className="intro-module-content">
+
+    <div className="intro-module-info">
+
+      <span className="intro-module-label">
+        iMATRIX EDUVERSITY
+      </span>
+
+      <h2>
+        BUILDING
+        <span> FUTURE MINDS</span>
+      </h2>
+
+      <p>
+        Discover our vision for AI, Robotics, STEM education
+        and practical technology learning.
+      </p>
+
+      <div className="intro-module-line">
+        <span />
+      </div>
+
+      <div className="intro-module-meta">
+        <span>AI</span>
+        <span>ROBOTICS</span>
+        <span>STEM</span>
+        <span>INNOVATION</span>
+      </div>
+
+    </div>
+
+
+    <div className="intro-module-video">
+
+      <div className="video-corner top-left" />
+      <div className="video-corner top-right" />
+      <div className="video-corner bottom-left" />
+      <div className="video-corner bottom-right" />
+
+      <video
+        controls
+        playsInline
+        preload="metadata"
+        poster="/gallery/photo01.jpeg"
+      >
+        <source
+          src="/intro/intro-video.mp4"
+          type="video/mp4"
+        />
+
+        Your browser does not support the video element.
+      </video>
+
+      <div className="video-system-label">
+        <span />
+        PLAY INTRO
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+      {/* =====================================================
           TECHNOLOGY SECTION
       ===================================================== */}
 
@@ -578,60 +655,253 @@ export default function Home() {
    NAV BUTTON
    ========================================================= */
 
-.nav-tech {
-  position: relative;
+   /* =========================================================
+   NAVIGATION
+========================================================= */
 
-  width: 125px;
-  height: 52px;
-
+.nav-menu {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  gap: 28px;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+
+/* =========================================================
+   NAV BUTTON
+========================================================= */
+
+.nav-tech {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  min-width: 82px;
+  height: 42px;
+
+  padding: 0 16px;
 
   overflow: hidden;
 
   text-decoration: none;
 
-  border: 1px solid rgba(34, 211, 238, .16);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+
+  border-radius: 10px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(15, 23, 42, .85),
-      rgba(2, 6, 23, .75)
+      rgba(15, 23, 42, 0.72),
+      rgba(2, 6, 23, 0.58)
     );
 
-  backdrop-filter: blur(12px);
-
-  clip-path: polygon(
-    8px 0,
-    calc(100% - 8px) 0,
-    100% 8px,
-    100% calc(100% - 8px),
-    calc(100% - 8px) 100%,
-    8px 100%,
-    0 calc(100% - 8px),
-    0 8px
-  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   transition:
-    transform .35s ease,
-    box-shadow .35s ease,
-    border-color .35s ease;
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease,
+    background .25s ease;
 }
 
 
-/* hover lift */
+/* subtle top highlight */
+
+.nav-tech::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 20%;
+  right: 20%;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, .5),
+    transparent
+  );
+
+  opacity: .35;
+}
+
+
+/* bottom cyan indicator */
+
+.nav-tech::after {
+  content: "";
+
+  position: absolute;
+
+  left: 25%;
+  right: 25%;
+  bottom: 3px;
+
+  height: 1px;
+
+  background: #22d3ee;
+
+  box-shadow: 0 0 8px rgba(34, 211, 238, .7);
+
+  transform: scaleX(0);
+
+  transition: transform .25s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
 
 .nav-tech:hover {
-  transform: translateY(-6px) scale(1.03);
+  transform: translateY(-2px);
 
-  border-color: rgba(34, 211, 238, .6);
+  border-color: rgba(34, 211, 238, .35);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(34, 211, 238, .07),
+      rgba(2, 6, 23, .7)
+    );
 
   box-shadow:
-    0 0 15px rgba(34, 211, 238, .2),
-    0 0 45px rgba(34, 211, 238, .08),
-    inset 0 0 25px rgba(34, 211, 238, .04);
+    0 8px 25px rgba(0, 0, 0, .25),
+    0 0 20px rgba(34, 211, 238, .08);
+}
+
+.nav-tech:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================================================
+   NAV TEXT
+========================================================= */
+
+.nav-text {
+  position: relative;
+
+  z-index: 5;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+  white-space: nowrap;
+
+  transition:
+    color .25s ease,
+    text-shadow .25s ease;
+}
+
+
+.nav-tech:hover .nav-text {
+  color: #67e8f9;
+
+  text-shadow:
+    0 0 8px rgba(34, 211, 238, .5);
+}
+
+
+/* =========================================================
+   TECH TEXTURE
+========================================================= */
+
+.nav-texture {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: .12;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 25% 35%,
+      rgba(34, 211, 238, .6) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 75% 65%,
+      rgba(34, 211, 238, .45) 0 1px,
+      transparent 2px
+    );
+
+  background-size:
+    28px 28px,
+    36px 36px;
+
+  transition: opacity .3s ease;
+}
+
+.nav-tech:hover .nav-texture {
+  opacity: .28;
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .nav-menu {
+    width: 100%;
+
+    gap: 5px;
+
+    justify-content: center;
+
+    flex-wrap: nowrap;
+  }
+
+  .nav-tech {
+    min-width: 0;
+
+    width: auto;
+
+    height: 34px;
+
+    padding: 0 8px;
+
+    border-radius: 8px;
+  }
+
+  .nav-text {
+    font-size: 7px;
+
+    letter-spacing: .08em;
+  }
+
+  .login-button {
+    height: 34px;
+
+    padding: 0 9px;
+
+    font-size: 7px;
+
+    letter-spacing: .08em;
+
+    white-space: nowrap;
+  }
 }
 
 
@@ -2505,8 +2775,38 @@ export default function Home() {
 
         @media (max-width: 900px) {
 
+          /* Keep navigation available on mobile instead of hiding it.
+             It becomes a compact horizontal scroller. */
+          .robot-navbar {
+            height: auto;
+            min-height: 86px;
+            flex-wrap: wrap;
+            row-gap: 4px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+
           .robot-nav {
+            display: flex;
+            width: 100%;
+            order: 3;
+            justify-content: flex-start;
+            gap: 8px;
+            padding: 8px 0 2px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x proximity;
+          }
+
+          .robot-nav::-webkit-scrollbar {
             display: none;
+          }
+
+          .robot-nav .nav-tech {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
           }
 
           .robot-interface {
@@ -2564,20 +2864,60 @@ export default function Home() {
         @media (max-width: 640px) {
 
           .robot-navbar {
-            padding: 0 15px;
+            padding: 10px 12px 8px;
+            gap: 8px;
+          }
+
+          .robot-logo {
+            min-width: 0;
+            gap: 8px;
+          }
+
+          .logo-robot {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
           }
 
           .logo-title {
-            font-size: 16px;
+            max-width: 155px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 13px;
+            letter-spacing: 1px;
+          }
+
+          .logo-subtitle {
+            font-size: 7px;
+            letter-spacing: 1.5px;
           }
 
           .login-button {
-            padding: 10px 12px;
-            font-size: 9px;
+            flex: 0 0 auto;
+            padding: 9px 10px;
+            font-size: 8px;
+            letter-spacing: 1px;
+          }
+
+          .robot-nav {
+            margin: 0 -12px;
+            padding: 7px 12px 2px;
+            gap: 6px;
+          }
+
+          .nav-tech {
+            width: 92px;
+            height: 42px;
+          }
+
+          .nav-text {
+            font-size: 8px;
+            letter-spacing: 1.1px;
           }
 
           .robot-hero {
-            padding-top: 30px;
+            padding: 30px 12px 60px;
           }
 
           .hero-heading h1 {
@@ -2642,6 +2982,683 @@ export default function Home() {
           }
 
         }
+
+        @media (max-width: 380px) {
+          .logo-title {
+            max-width: 125px;
+            font-size: 11px;
+          }
+
+          .logo-subtitle {
+            font-size: 6px;
+          }
+
+          .login-button {
+            padding: 8px 8px;
+            font-size: 7px;
+          }
+
+          .nav-tech {
+            width: 86px;
+            height: 40px;
+          }
+
+          .robot-interface {
+            height: 1030px;
+          }
+
+          .tech-node {
+            width: min(170px, calc(50vw - 20px));
+          }
+        }
+/* =========================================================
+   ABOUT — AI CIRCUIT NETWORK
+   ========================================================= */
+
+.nav-about .nav-texture {
+  background-image:
+    radial-gradient(
+      circle at 18% 30%,
+      rgba(34, 211, 238, .8) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 80% 65%,
+      rgba(34, 211, 238, .7) 0 2px,
+      transparent 3px
+    ),
+    linear-gradient(
+      90deg,
+      transparent 46%,
+      rgba(34, 211, 238, .16) 47%,
+      transparent 49%
+    ),
+    linear-gradient(
+      25deg,
+      transparent 48%,
+      rgba(34, 211, 238, .13) 49%,
+      transparent 51%
+    );
+
+  background-size:
+    42px 42px,
+    58px 58px,
+    35px 35px,
+    30px 30px;
+
+  animation: aboutCircuitMove 7s linear infinite;
+}
+
+@keyframes aboutCircuitMove {
+  from {
+    background-position:
+      0 0,
+      20px 10px,
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      55px 35px,
+      -35px 50px,
+      40px 20px,
+      -30px 35px;
+  }
+}
+
+
+/* =========================================================
+   GALLERY — DIGITAL GRID / DATA
+   ========================================================= */
+
+.nav-gallery .nav-texture {
+  background-image:
+    radial-gradient(
+      circle at 25% 25%,
+      rgba(34, 211, 238, .8) 0 1.5px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(34, 211, 238, .65) 0 1.5px,
+      transparent 3px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(34, 211, 238, .08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      rgba(34, 211, 238, .08) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    45px 45px,
+    55px 55px,
+    18px 18px,
+    18px 18px;
+
+  animation: galleryGridMove 9s linear infinite;
+}
+
+@keyframes galleryGridMove {
+  from {
+    background-position:
+      0 0,
+      20px 20px,
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      45px 35px,
+      -40px 50px,
+      18px 18px,
+      18px 18px;
+  }
+}
+
+/* =========================================================
+   INTRO MODULE
+========================================================= */
+
+.intro-module {
+  position: relative;
+
+  width: min(1100px, calc(100% - 40px));
+
+  margin: 90px auto;
+
+  padding: 1px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(34, 211, 238, .16);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(34, 211, 238, .06),
+      rgba(15, 23, 42, .55),
+      rgba(2, 6, 23, .8)
+    );
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, .35),
+    0 0 40px rgba(34, 211, 238, .04);
+
+  backdrop-filter: blur(18px);
+}
+
+
+/* subtle technical grid */
+
+.intro-module::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .12;
+
+  background-image:
+    linear-gradient(
+      rgba(34, 211, 238, .15) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(34, 211, 238, .15) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.intro-module-header {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 13px 18px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+
+  background: rgba(2, 6, 23, .55);
+}
+
+
+.intro-module-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  color: #67e8f9;
+}
+
+
+.intro-module-dot {
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #22d3ee;
+
+  box-shadow:
+    0 0 8px rgba(34, 211, 238, .9);
+
+  animation: introPulse 2s ease-in-out infinite;
+}
+
+
+@keyframes introPulse {
+  0%, 100% {
+    opacity: .5;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.intro-module-code {
+  font-family: monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: #475569;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.intro-module-content {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns: .8fr 1.2fr;
+
+  gap: 35px;
+
+  align-items: center;
+
+  padding: 35px;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.intro-module-info {
+  padding: 10px;
+}
+
+
+.intro-module-label {
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  color: #22d3ee;
+}
+
+
+.intro-module-info h2 {
+  margin-top: 12px;
+
+  font-size: clamp(28px, 4vw, 45px);
+
+  line-height: 1.05;
+
+  font-weight: 950;
+
+  letter-spacing: -1px;
+
+  color: white;
+}
+
+
+.intro-module-info h2 span {
+  display: block;
+
+  color: #67e8f9;
+
+  text-shadow:
+    0 0 20px rgba(34, 211, 238, .18);
+}
+
+
+.intro-module-info p {
+  max-width: 390px;
+
+  margin-top: 16px;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   TECH LINE
+========================================================= */
+
+.intro-module-line {
+  width: 100%;
+
+  max-width: 280px;
+
+  height: 1px;
+
+  margin-top: 25px;
+
+  background: rgba(255, 255, 255, .08);
+}
+
+
+.intro-module-line span {
+  display: block;
+
+  width: 35%;
+
+  height: 1px;
+
+  background: #22d3ee;
+
+  box-shadow:
+    0 0 10px rgba(34, 211, 238, .7);
+}
+
+
+/* =========================================================
+   META TAGS
+========================================================= */
+
+.intro-module-meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 18px;
+}
+
+
+.intro-module-meta span {
+  padding: 5px 8px;
+
+  border: 1px solid rgba(34, 211, 238, .12);
+
+  border-radius: 5px;
+
+  background: rgba(34, 211, 238, .035);
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.intro-module-video {
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 16 / 9;
+
+  border: 1px solid rgba(34, 211, 238, .2);
+
+  border-radius: 14px;
+
+  background: #020617;
+
+  box-shadow:
+    0 0 30px rgba(34, 211, 238, .05);
+}
+
+
+.intro-module-video video {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   VIDEO CORNERS
+========================================================= */
+
+.video-corner {
+  position: absolute;
+
+  z-index: 3;
+
+  width: 18px;
+
+  height: 18px;
+
+  pointer-events: none;
+
+  border-color: rgba(34, 211, 238, .8);
+
+  border-style: solid;
+}
+
+
+.video-corner.top-left {
+  top: 8px;
+  left: 8px;
+
+  border-width: 1px 0 0 1px;
+}
+
+
+.video-corner.top-right {
+  top: 8px;
+  right: 8px;
+
+  border-width: 1px 1px 0 0;
+}
+
+
+.video-corner.bottom-left {
+  bottom: 8px;
+  left: 8px;
+
+  border-width: 0 0 1px 1px;
+}
+
+
+.video-corner.bottom-right {
+  right: 8px;
+  bottom: 8px;
+
+  border-width: 0 1px 1px 0;
+}
+
+
+/* =========================================================
+   VIDEO LABEL
+========================================================= */
+
+.video-system-label {
+  position: absolute;
+
+  left: 12px;
+
+  bottom: 12px;
+
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 5px 8px;
+
+  border: 1px solid rgba(34, 211, 238, .15);
+
+  border-radius: 5px;
+
+  background: rgba(2, 6, 23, .75);
+
+  backdrop-filter: blur(8px);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+
+  color: #67e8f9;
+}
+
+
+.video-system-label span {
+  width: 5px;
+
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #22d3ee;
+
+  box-shadow:
+    0 0 7px rgba(34, 211, 238, .9);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .intro-module {
+    width: calc(100% - 24px);
+
+    margin: 55px auto;
+
+    border-radius: 16px;
+  }
+
+
+  .intro-module-header {
+    padding: 11px 13px;
+  }
+
+
+  .intro-module-status {
+    font-size: 7px;
+
+    letter-spacing: 1.4px;
+  }
+
+
+  .intro-module-code {
+    font-size: 7px;
+  }
+
+
+  .intro-module-content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+    padding: 20px 15px 18px;
+  }
+
+
+  .intro-module-info {
+    width: 100%;
+
+    padding: 0;
+
+    text-align: left;
+  }
+
+
+  .intro-module-label {
+    font-size: 7px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .intro-module-info h2 {
+    margin-top: 8px;
+
+    font-size: 27px;
+  }
+
+
+  .intro-module-info p {
+    margin-top: 11px;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+  }
+
+
+  .intro-module-line {
+    margin-top: 17px;
+  }
+
+
+  .intro-module-meta {
+    gap: 5px;
+
+    margin-top: 12px;
+  }
+
+
+  .intro-module-meta span {
+    padding: 4px 6px;
+
+    font-size: 6px;
+  }
+
+
+  .intro-module-video {
+    width: 100%;
+
+    border-radius: 11px;
+  }
+
+
+  .video-system-label {
+    left: 8px;
+
+    bottom: 8px;
+
+    padding: 4px 6px;
+
+    font-size: 6px;
+  }
+
+}
 
       `}</style>
 
