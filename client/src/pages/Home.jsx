@@ -2880,14 +2880,16 @@ export default function Home() {
           }
 
           .logo-title {
-            max-width: 155px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-size: 13px;
-            letter-spacing: 1px;
-          }
+  width: max-content;
+  max-width: none;
 
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+
+  font-size: 13px;
+  letter-spacing: 1px;
+}
           .logo-subtitle {
             font-size: 7px;
             letter-spacing: 1.5px;
