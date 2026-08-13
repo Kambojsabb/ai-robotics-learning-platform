@@ -79,7 +79,7 @@ export default function Home() {
 
           <div>
             <div className="logo-title">
-              IMATRIX EDUVERSITY
+              iMatrix EduVersity Pvt Ltd
             </div>
 
             <div className="logo-subtitle">
